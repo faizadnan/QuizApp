@@ -105,8 +105,14 @@ document.querySelectorAll("input").forEach(input => {
 })
 
 document.getElementById("Start_quiz").addEventListener("click", function(){
-    document.querySelector(".container").style.display="flex";
+    this.style.display = "none";
+    document.getElementById("loading").innerText= "Loading..."
+    setTimeout(function(){
+        document.getElementById("loading").style.display="none"
+        document.querySelector(".container").style.display="flex";
     document.querySelector("#next_question").style.display="block";
-    this.style.display = "none"
+   
+    },2000)
+    
 })
  
