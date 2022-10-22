@@ -29,7 +29,7 @@ let next_question = document.getElementById("next_question");
 let music = new Audio("./music1.wav")      
 let winner = new Audio("./winner1.mp3")      
 arr.map(items => {
-    document.getElementById("question").value = arr[i].question;
+    document.getElementById("question").innerText = arr[i].question;
     document.querySelector("#Correct_ans").value = arr[i].ans1
     document.querySelector(".Wrong_ans1").value = arr[i].ans2
     document.querySelector(".Wrong_ans2").value = arr[i].ans3
@@ -41,7 +41,7 @@ document.getElementById("next_question").addEventListener("click", function () {
     i = i + 1;
     console.log("clicked");
     arr.map(items => {
-        document.getElementById("question").value = arr[i].question;
+        document.getElementById("question").innerText = arr[i].question;
         document.querySelector("#Correct_ans").value = arr[i].ans1
         document.querySelector(".Wrong_ans1").value = arr[i].ans2
         document.querySelector(".Wrong_ans2").value = arr[i].ans3
