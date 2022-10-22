@@ -21,6 +21,14 @@ let arr = [{
     ans3: "Jet Skey",
     ans4: "Java Sheets",
 
+},
+{
+    question: "Whaich is a CSS framework?",
+    ans1: "Bootstrap",
+    ans2: "React JS",
+    ans3: "React Native",
+    ans4: "Laravel",
+
 }]
 let i = 0;
 let corrctAns = 0;
@@ -63,15 +71,14 @@ document.querySelectorAll(".Wrong").forEach(items => {
     items.addEventListener("click", function (event) {        
         items.style.color = "black";
         items.style.backgroundColor = "red";
-        music.play()
+      
 
     })
 })
 
 document.querySelector("#Correct_ans").addEventListener("click", function () {   
     this.style.backgroundColor = "green"
-    this.style.color = "black";
-    music.play()
+    this.style.color = "black";  
     corrctAns =corrctAns+1
     console.log(`coreadns= ${corrctAns}`)
 
@@ -82,7 +89,7 @@ submitTest.addEventListener("click", function(){
     document.querySelector(".result_div").classList.add("showScore")
     document.querySelector(".buttons").style.display="none"
     console.log(`coreadnsfghjk= ${corrctAns}`);
-    let result = (corrctAns>=2) ? `Great! your score is ${corrctAns}/3 ` : `Oops! your score is ${corrctAns}/3`;            
+    let result = (corrctAns>=(arr.length/2+1)) ? `Great! your score is ${corrctAns}/${arr.length} ` : `Oops! your score is ${corrctAns}/${arr.length}`;            
     document.getElementById("score").insertAdjacentText("afterbegin", result);
     winner.play()
 })
@@ -90,8 +97,9 @@ submitTest.addEventListener("click", function(){
 
 document.querySelectorAll("input").forEach(input => {
     input.addEventListener("click", function(){
-        input.classList.add("efg");
-        Array.from(document.querySelectorAll("input")).filter(item => !item.classList.contains("efg")).forEach(items => items.setAttribute("disabled", "disabled"))        
+        input.classList.add("efg");       
+        Array.from(document.querySelectorAll("input")).filter(item => !item.classList.contains("efg")).forEach(items => items.setAttribute("disabled", "disabled"))  ;
+        music.play()     
     })
 })
  
