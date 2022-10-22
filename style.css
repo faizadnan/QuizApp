@@ -26,6 +26,8 @@ body{
 }
 
 
+
+
 #question{
     width: 500px;
     text-align: center;
@@ -38,7 +40,7 @@ body{
 }
 
 .container{
-    display: flex;
+    display: none;
     justify-content: center;
     flex-direction: column;
     align-items: center;
@@ -115,7 +117,7 @@ h2{
 .buttons{
     background-color: darkslategray;
 }
-.buttons button{
+.buttons button, #start_quiz{
     width: 200px;
     background-color: white;
     border: none;
@@ -123,6 +125,10 @@ h2{
     font-weight: bold;
     border-radius: 2px;
     cursor: pointer;
+}
+
+#next_question{
+    display: none;
 }
 
 @media screen and (max-width:500px) {

@@ -103,4 +103,10 @@ document.querySelectorAll("input").forEach(input => {
         music.play()     
     })
 })
+
+document.getElementById("Start_quiz").addEventListener("click", function(){
+    document.querySelector(".container").style.display="flex";
+    document.querySelector("#next_question").style.display="block";
+    this.style.display = "none"
+})
  
