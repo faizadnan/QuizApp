@@ -49,6 +49,7 @@ document.getElementById("next_question").addEventListener("click", function () {
     i = i + 1;
     console.log("clicked");
     arr.map(items => {
+        Array.from(document.querySelectorAll("input")).forEach(items => items.removeAttribute("disabled"))
         document.getElementById("question").innerText = arr[i].question;
         document.querySelector("#Correct_ans").value = arr[i].ans1
         document.querySelector(".Wrong_ans1").value = arr[i].ans2
@@ -64,7 +65,7 @@ document.getElementById("next_question").addEventListener("click", function () {
         submitTest.style.display = "block"
         next_question.style.display = "none"
     }
-    Array.from(document.querySelectorAll("input")).forEach(items => items.removeAttribute("disabled"))
+    
 })
 
 document.querySelectorAll(".Wrong").forEach(items => {   
