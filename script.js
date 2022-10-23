@@ -51,10 +51,11 @@ function moveToNextQues () {
 
     //using this if conditon so that once the last question timer ends, the counter hides...and page redirect to score page
         if(i==arr.length){
-        document.getElementById("counter").style.display = "none";
+        document.getElementById("counter").style.display = "none"; 
+      
         submitQuiz()
     }  
-
+   
     arr.map(items => {
         Array.from(document.querySelectorAll("input")).forEach(items => items.removeAttribute("disabled"))
         document.getElementById("question").innerText = arr[i].question;
@@ -97,6 +98,10 @@ document.querySelector("#Correct_ans").addEventListener("click", function () {
 })
 
 function submitQuiz() {
+    //clearing the settimeout function
+    clearInterval(timing)    
+    console.log("clear interval worked");
+    //-----------------------------------------
     document.querySelector(".container").style.display = "none"
     document.querySelector(".result_div").classList.add("showScore")
     document.querySelector(".buttons").style.display = "none"
@@ -115,7 +120,7 @@ document.querySelectorAll("input").forEach(input => {
         music.play()
     })
 })
-
+let timing;
 document.getElementById("Start_quiz").addEventListener("click", function () {
     this.style.display = "none";
     document.getElementById("loading").innerText = "Loading..."
@@ -126,18 +131,22 @@ document.getElementById("Start_quiz").addEventListener("click", function () {
          //seting counter ON:-
          document.getElementById("counter").style.display = "inline-block";  
        
-         setInterval(function () {
-            console.log("set interval is woking")
-            if (count > 0) {
-                count = count - 1;
-            } else {
-                count = 30
-            }
-            if(count==0){
-                moveToNextQues()
-            }
-            document.getElementById("counter").innerText = count;
-        }, 1000);
+        
+          timing = setInterval(function () {
+                console.log("set interval is woking")
+                if (count > 0) {
+                    console.log(i)
+                    count = count - 1;
+                } else {
+                    count = 30
+                }
+                if(count==0){
+                    moveToNextQues()
+                }
+                document.getElementById("counter").innerText = count;
+            }, 1000);
+         
+        
             
        
     }, 2000)
