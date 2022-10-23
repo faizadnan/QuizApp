@@ -48,14 +48,12 @@ arr.map(items => {
 
 function moveToNextQues () {
     i = i + 1;
-
     //using this if conditon so that once the last question timer ends, the counter hides...and page redirect to score page
         if(i==arr.length){
         document.getElementById("counter").style.display = "none"; 
       
         submitQuiz()
-    }  
-   
+    }     
     arr.map(items => {
         Array.from(document.querySelectorAll("input")).forEach(items => items.removeAttribute("disabled"))
         document.getElementById("question").innerText = arr[i].question;
@@ -74,9 +72,7 @@ function moveToNextQues () {
             next_question.style.display = "none"
         }
        
-    })}
-    
-
+    })} 
 
 document.getElementById("next_question").addEventListener("click", moveToNextQues)
 
@@ -112,7 +108,6 @@ function submitQuiz() {
 }
 submitTest.addEventListener("click",submitQuiz )
 
-
 document.querySelectorAll("input").forEach(input => {
     input.addEventListener("click", function () {
         input.classList.add("efg");
@@ -123,14 +118,14 @@ document.querySelectorAll("input").forEach(input => {
 let timing;
 document.getElementById("Start_quiz").addEventListener("click", function () {
     this.style.display = "none";
+    document.querySelector(".instruction").style.display ="none"
     document.getElementById("loading").innerText = "Loading..."
     setTimeout(function () {
         document.getElementById("loading").style.display = "none"
         document.querySelector(".container").style.display = "flex";
         document.querySelector("#next_question").style.display = "block";
          //seting counter ON:-
-         document.getElementById("counter").style.display = "inline-block";  
-       
+         document.getElementById("counter").style.display = "inline-block";         
         
           timing = setInterval(function () {
                 console.log("set interval is woking")
@@ -146,10 +141,7 @@ document.getElementById("Start_quiz").addEventListener("click", function () {
                 document.getElementById("counter").innerText = count;
             }, 1000);
          
-        
-            
-       
-    }, 2000)
+        }, 2000)
 
 })
 

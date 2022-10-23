@@ -150,6 +150,21 @@ h2{
     padding-top: 5px;
 }
 
+.instruction{
+    background-color: white;
+    width: 400px;
+    height: 250px;
+ 
+}
+.instruction h5{
+    font-size: 22px;
+    color: red  ;
+    text-align: center;
+    text-decoration: underline;
+}
+.instruction ul li{
+    margin-top: 5px;
+}
 @media screen and (max-width:500px) {
     .options input {
         width: 100%;
