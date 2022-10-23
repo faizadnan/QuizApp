@@ -37,23 +37,15 @@ let next_question = document.getElementById("next_question");
 let music = new Audio("./music1.wav")
 let winner = new Audio("./winner1.mp3");
 let count = 31;
-arr.map(items => {
-    document.getElementById("question").innerText = arr[i].question;
-    document.querySelector("#Correct_ans").value = arr[i].ans1
-    document.querySelector(".Wrong_ans1").value = arr[i].ans2
-    document.querySelector(".Wrong_ans2").value = arr[i].ans3
-    document.querySelector(".Wrong_ans3").value = arr[i].ans4
 
-})
-
-function moveToNextQues () {
+function moveToNextQues() {
     i = i + 1;
     //using this if conditon so that once the last question timer ends, the counter hides...and page redirect to score page
-        if(i==arr.length){
-        document.getElementById("counter").style.display = "none"; 
-      
+    if (i == arr.length) {
+        document.getElementById("counter").style.display = "none";
+
         submitQuiz()
-    }     
+    }
     arr.map(items => {
         Array.from(document.querySelectorAll("input")).forEach(items => items.removeAttribute("disabled"))
         document.getElementById("question").innerText = arr[i].question;
@@ -65,37 +57,39 @@ function moveToNextQues () {
             item.style.color = "white";
             item.style.backgroundColor = "darkslategrey"
         });
-        count=31;console.log(i)
+        count = 31; console.log(i)
         if (i == (arr.length - 1)) {
             submitTest.style.display = "block";
-            
+
             next_question.style.display = "none"
         }
-       
-    })} 
+    })
+}
 
 document.getElementById("next_question").addEventListener("click", moveToNextQues)
 
+//adding a red background to incorrect options:-
 document.querySelectorAll(".Wrong").forEach(items => {
     items.addEventListener("click", function (event) {
         items.style.color = "black";
         items.style.backgroundColor = "red";
-
-
     })
 })
+//---------------------------------------------------------
 
+//Working with the correct answers:-
 document.querySelector("#Correct_ans").addEventListener("click", function () {
     this.style.backgroundColor = "green"
     this.style.color = "black";
     corrctAns = corrctAns + 1
     console.log(`coreadns= ${corrctAns}`)
-
 })
+//--------------------------------------------------------------------
 
+//Working with the submit Quiz button and instruction:-
 function submitQuiz() {
     //clearing the settimeout function
-    clearInterval(timing)    
+    clearInterval(timing)
     console.log("clear interval worked");
     //-----------------------------------------
     document.querySelector(".container").style.display = "none"
@@ -106,8 +100,10 @@ function submitQuiz() {
     document.getElementById("score").insertAdjacentText("afterbegin", result);
     winner.play()
 }
-submitTest.addEventListener("click",submitQuiz )
+submitTest.addEventListener("click", submitQuiz)
+//---------------------------------------------------------------------------------
 
+//Working with click event on options an disabling!!
 document.querySelectorAll("input").forEach(input => {
     input.addEventListener("click", function () {
         input.classList.add("efg");
@@ -115,36 +111,42 @@ document.querySelectorAll("input").forEach(input => {
         music.play()
     })
 })
+//------------------------------------------------------------------
 let timing;
+//Working on Start Quiz---------------------------------
 document.getElementById("Start_quiz").addEventListener("click", function () {
     this.style.display = "none";
-    document.querySelector(".instruction").style.display ="none"
+    document.querySelector(".instruction").style.display = "none"
     document.getElementById("loading").innerText = "Loading..."
     setTimeout(function () {
         document.getElementById("loading").style.display = "none"
         document.querySelector(".container").style.display = "flex";
         document.querySelector("#next_question").style.display = "block";
-         //seting counter ON:-
-         document.getElementById("counter").style.display = "inline-block";         
-        
-          timing = setInterval(function () {
-                console.log("set interval is woking")
-                if (count > 0) {
-                    console.log(i)
-                    count = count - 1;
-                } else {
-                    count = 30
-                }
-                if(count==0){
-                    moveToNextQues()
-                }
-                document.getElementById("counter").innerText = count;
-            }, 1000);
-         
-        }, 2000)
+        //seting counter ON:-
+        document.getElementById("counter").style.display = "inline-block";
 
+        timing = setInterval(function () {
+            // console.log("set interval is woking")
+            if (count > 0) {
+                console.log(i)
+                count = count - 1;
+            } else {
+                count = 30
+            }
+            if (count == 0) {
+                moveToNextQues()
+            }
+            document.getElementById("counter").innerText = count;
+        }, 1000);
+        //----------------------------------------------------------------
+
+    }, 2000)
 })
+//-------------------------------------------------------------------------------
 
+document.querySelector(".Retake_button").addEventListener("click", function(){
+    window.location.href=("https://faizadnan.github.io/QuizApp/")
+})
 
 
 

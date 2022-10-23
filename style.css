@@ -165,6 +165,7 @@ h2{
 }
 .instruction ul li{
     margin-top: 5px;
+ 
 }
 @media screen and (max-width:500px) {
     .options input {
